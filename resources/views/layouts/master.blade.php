@@ -21,7 +21,7 @@
   <body>
 
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Birchwood Bicycle Polo Co.</a>
+    <a class="navbar-brand" href="/">MessageCloud</a>
     <button class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -46,7 +46,6 @@
 
     <footer class="container">
       <div class="row">
-        <p class="p-2 flex-grow-1">&copy; Your Company 2020</p>
         @yield('footer')
       </div>
     </footer>

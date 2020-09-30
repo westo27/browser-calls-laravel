@@ -1,7 +1,7 @@
 /* Custom CSS for Bicycle Polo example */
 
 .bicycle-polo-background {
-  background-image: url("../img/bicycle-polo.jpg");
+  background-image: url("../img/MessageCloud-Logo-No-Text.png");
   background-size: cover;
   background-position: 75% 25%;
 }
@@ -44,4 +44,12 @@
 
 .container {
   padding-top: 15px;
+}
+
+.title {
+    margin-top: 40px;
+}
+
+.call-card-wrapper {
+    margin-top: 40px;
 }
