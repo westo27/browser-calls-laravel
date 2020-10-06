@@ -21,7 +21,7 @@
   <body>
 
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">MessageCloud</a>
+    <a class="navbar-brand" href="/">Client Dashboard</a>
     <button class="navbar-toggler"
             type="button"
             data-toggle="collapse"
@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('dashboard') }}">Support dashboard</a>
+              <a class="navbar-brand" href="{{ route('dashboard') }}">Server Dashboard</a>
             </li>
           </ul>
         </div>

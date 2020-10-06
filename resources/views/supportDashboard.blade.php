@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Support Dashboard
+    Server Dashboard
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@
           <div class="col-md-4 offset-md-2 call-card-wrapper">
               <div class="card">
                   <h5 class="card-header">
-                      Make an outbound call
+                      Make a call to a client
                   </h5>
                   <div class="card-body">
                       <div class="form-group row">
@@ -32,7 +32,7 @@
                           </div>
                       </div>
                       <button onclick="callCustomer(getElementById('outbound-number').value)" type="submit" class="btn btn-primary btn-lg call-customer-button">
-                          Call customer
+                          Call a client
                       </button>
                       <button class="btn btn-lg btn-danger hangup-button" disabled onclick="hangUp()">Hang up</button>
                   </div>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Home
+    Client Dashboard
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4">
-                <h2 class="title">Contact Support</h2>
+                <h2 class="title">Client Dashboard</h2>
             </div>
         </div>
 
@@ -17,7 +17,7 @@
             <div class="col-md-4 offset-md-4 call-card-wrapper">
                 <div class="card">
                     <h5 class="card-header">
-                      Talk to support now
+                      Make a call to the server
                     </h5>
                     <div class="card-body">
                         <div class="form-group row">
@@ -27,7 +27,7 @@
                             </div>
                         </div>
                         <button class="btn btn-lg btn-primary call-support-button" onclick="callSupport()">
-                          Call support
+                          Call server
                         </button>
                         <button class="btn btn-lg btn-danger hangup-button" disabled onclick="hangUp()">Hang up</button>
                     </div>
