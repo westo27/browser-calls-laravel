@@ -35,6 +35,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app['url']->forceScheme('https');
+//        $this->app['url']->forceScheme('https');
     }
 }

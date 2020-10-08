@@ -5,7 +5,25 @@
 @endsection
 
 @section('content')
-  <div class="container">
+
+    <?php
+    require_once '../vendor/autoload.php';
+    use Twilio\Rest\Client;
+
+    //load env
+    $dotenv = Dotenv\Dotenv::createImmutable('../');
+    $dotenv->load();
+
+    //get the twilio account details we need
+    $sid    = env('TWILIO_ACCOUNT_SID');
+    $token  = env('Auth_Token');
+    $twilio = new Client($sid, $token);
+
+    $calls = $twilio->calls
+        ->read([], 100);
+    ?>
+
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-4 offset-md-4">
         <h2 class="title">Server Dashboard</h2>
@@ -19,7 +37,27 @@
     </div>
 
       <div class="row">
-          <div class="col-md-4 offset-md-2 call-card-wrapper">
+          <div class="col-md-3 offset-md-1">
+              <div class="card call-card-wrapper">
+                  <h5 class="card-header">
+                      Call Logs
+                  </h5>
+                      <ul class="list-group list-group-flush">
+                          <?php
+                          foreach ($calls as $record) {
+                              print('<li class="list-group-item">'.
+                                  '<div>'.$record->startTime->format('D jS F Y').'</div>'.
+                                  '<div>'.$record->startTime->format('H:i:s').'</div>'.
+                                  '<div> From: '.$record->from.'</div>'.
+                                  '<div> To: '.$record->to.'</div>'.
+                                  '</li>');
+                          }
+                          ?>
+                      </ul>
+                  </div>
+
+              </div>
+          <div class="col-md-3 call-card-wrapper">
               <div class="card">
                   <h5 class="card-header">
                       Make a call to a client
@@ -38,7 +76,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-md-4 call-card-wrapper">
+          <div class="col-md-3 call-card-wrapper">
               <div class="card">
                   <h5 class="card-header">
                       Receive a call
