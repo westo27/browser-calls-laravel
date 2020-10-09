@@ -44,12 +44,15 @@
                   </h5>
                       <ul class="list-group list-group-flush">
                           <?php
+                          $url = url("/images/call-arrow.png");
+
                           foreach ($calls as $record) {
                               print('<li class="list-group-item">'.
                                   '<div>'.$record->startTime->format('D jS F Y').'</div>'.
                                   '<div>'.$record->startTime->format('H:i:s').'</div>'.
                                   '<div> From: '.$record->from.'</div>'.
                                   '<div> To: '.$record->to.'</div>'.
+                                  '<img src='.$url.' alt= "call-arrow" />'.
                                   '</li>');
                           }
                           ?>
