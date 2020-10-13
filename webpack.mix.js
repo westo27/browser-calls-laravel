@@ -13,4 +13,5 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/browser-calls.js', 'public/js')
     .extract(['twilio-client'])
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .copy('resources/img', 'public/images');
