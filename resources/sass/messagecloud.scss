@@ -1,5 +1,17 @@
 /* MessageCloud custom SCSS */
 
+.container {
+    padding-top: 15px;
+}
+
+.title {
+    margin-top: 40px;
+}
+
+.call-card-wrapper {
+    margin-top: 40px;
+}
+
 //Arrows
 .arrow {
     width: 6%;
@@ -15,6 +27,7 @@
     padding-left: 10px;
 }
 
+//Buttons
 .answer-button,
 .call-support-button {
   width: 48%;
@@ -24,16 +37,4 @@
 .hangup-button {
   width: 48%;
   float: right;
-}
-
-.container {
-  padding-top: 15px;
-}
-
-.title {
-    margin-top: 40px;
-}
-
-.call-card-wrapper {
-    margin-top: 40px;
 }

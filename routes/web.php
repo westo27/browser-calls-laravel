@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get(
-    '/', ['as' => 'home', function () {
+    '/',
+    ['as' => 'home', function () {
         return response()->view('index');
     }]
 );

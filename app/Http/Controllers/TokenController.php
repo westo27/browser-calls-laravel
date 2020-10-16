@@ -10,7 +10,6 @@ use Twilio\Jwt\Grants\VoiceGrant;
 
 class TokenController extends Controller
 {
-    
     public function __construct(AccessToken $accessToken)
     {
         $this->accessToken=$accessToken;

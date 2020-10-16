@@ -25,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
                 return new AccessToken($accountSid, $apiKey, $apiSecret, 3600, 'identity');
             }
         );
-
     }
 
     /**
