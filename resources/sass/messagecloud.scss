@@ -1,29 +1,19 @@
-/* Custom CSS for Bicycle Polo example */
+/* MessageCloud custom SCSS */
 
-.bicycle-polo-text {
-  background-color: rgba(255, 255, 255, 0.75);
-  padding-bottom: 1rem;
-
-  h1 {
-    font-weight: bold;
-  }
-
-  @media (min-width: 768px) {
-    margin-right: 5%;
-    width: 40%;
-  }
+//Arrows
+.arrow {
+    width: 6%;
 }
 
-// .bicycle-polo-text h1 {
-//   font-weight: bold;
-// }
+.incoming {
+    transform: rotate(180deg);
+    padding-top: 3px;
+    padding-right: 10px;
+}
 
-// @media (min-width: 768px) {
-//   .bicycle-polo-text {
-//     margin-right: 5%;
-//     width: 40%;
-//   }
-// }
+.outgoing {
+    padding-left: 10px;
+}
 
 .answer-button,
 .call-support-button {

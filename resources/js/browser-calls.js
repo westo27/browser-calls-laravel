@@ -95,10 +95,10 @@ function setupClient() {
 
 };
 
-/* Call a customer from a support ticket */
+/* Call a customer from a inputted number */
 window.callCustomer = function(phoneNumber) {
     updateCallStatus("Calling " + phoneNumber + "...");
-    
+
     var params = {"phoneNumber": phoneNumber};
     device.connect(params);
 };
