@@ -31,4 +31,24 @@ class CallController extends Controller
 
         return $response;
     }
+    /**
+     * Redirect to voicemail
+     *
+     * @return VoiceResponse
+     */
+    public function voicemail()
+    {
+        // Start our TwiML response
+        $response = new VoiceResponse();
+
+        # Use <Say> to give the caller some instructions
+        $response->say('Hello. Please leave a message after the beep.');
+
+        # Use <Record> to record the caller's message
+        $response->record();
+
+        # End the call with <Hangup>
+        $response->hangup();
+        return $response;
+    }
 }

@@ -31,10 +31,10 @@ Route::get(
     ['uses' => 'DashboardController@dashboard', 'as' => 'dashboard']
 );
 Route::post(
-    '/ticket',
-    ['uses' => 'TicketController@newTicket', 'as' => 'new-ticket']
-);
-Route::post(
     '/support/call',
     ['uses' => 'CallController@newCall', 'as' => 'new-call']
+);
+Route::get(
+    '/support/voicemail',
+    ['uses' => 'CallController@voicemail', 'as' => 'voicemail']
 );
