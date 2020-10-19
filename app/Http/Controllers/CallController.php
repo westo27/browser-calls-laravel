@@ -13,15 +13,15 @@ class CallController extends Controller
     /**
      * Process a new call
      *
-     * @param Request $request
-     * @return VoiceResponse
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function newCall(Request $request)
     {
         $response = new VoiceResponse();
         $callerIdNumber = config('services.twilio')['number'];
 
-        $dial = $response->dial(null, ['callerId' => $callerIdNumber]);
+        $dial = $response->dial(null, ['callerId'=>$callerIdNumber]);
         $phoneNumberToDial = $request->input('phoneNumber');
 
         if (isset($phoneNumberToDial)) {
@@ -29,6 +29,9 @@ class CallController extends Controller
         } else {
             $dial->client('support_agent');
         }
+
+        $dial->setTimeout(30);
+        $dial->setAction($this->voicemail());
 
         return $response;
     }
@@ -44,7 +47,8 @@ class CallController extends Controller
         $response = new VoiceResponse();
 
         # Use <Say> to give the caller some instructions
-        $response->say('Hello. Please leave a message after the beep.');
+        $response->say("Hello you have reached the MessageCloud support desk. We're sorry but there is nobody available at the moment to take your call.
+         Please leave a message and one of our team will get back to you as soon as possible");
 
         # Use <Record> to record the caller's message
         $response->record();
