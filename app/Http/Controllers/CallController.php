@@ -47,7 +47,7 @@ class CallController extends Controller
         $response = new VoiceResponse();
 
         # Use <Say> to give the caller some instructions
-        $response->say("Hello you have reached the MessageCloud support desk. We're sorry but there is nobody available at the moment to take your call.
+        $response->say("Hello you have reached the MessageCloud support desk. We're sorry that we can't take your call at the moment.
          Please leave a message and one of our team will get back to you as soon as possible");
 
         # Use <Record> to record the caller's message

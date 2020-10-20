@@ -54,6 +54,7 @@
 
     @yield('javascript')
 
+    <script src="/js/app.js"></script>
     <script src="/js/manifest.js"></script>
     <script src="/js/browser-calls.js"></script>
 

@@ -10,18 +10,18 @@
     require_once '../vendor/autoload.php';
     use Twilio\Rest\Client;
 
-    //load env
     $dotenv = Dotenv\Dotenv::createImmutable('../');
     $dotenv->load();
 
-    //get the twilio account details we need
     $sid = env('TWILIO_ACCOUNT_SID');
     $token = env('Auth_Token');
     $twilio = new Client($sid, $token);
 
-    $outgoingCalls = $twilio->calls
-        ->read(["from" => "+441245209623", "direction" => "outgoing-dial"]);
+    //Get all incoming and outgoing call logs
+    $outgoingCalls = $twilio->calls->read(["from" => "+441245209623", "direction" => "outgoing-dial"]);
+    $incomingCalls = $twilio->calls->read(["to" => "+441245209623"]);
 
+    //Prepare arrays to be used
     foreach ($outgoingCalls as $key => $call) {
         $call->directionLog = 'outgoing';
         if ($call->to == "client:support_agent") {
@@ -29,22 +29,33 @@
         }
     }
 
-    $incomingCalls = $twilio->calls
-        ->read(["to" => "+441245209623"]);
-
     foreach ($incomingCalls as $call) {
         $call->directionLog = 'incoming';
     }
     ?>
 
+    <div class="modal" id="incomingCallModal">
+        <div class="col-md-3 call-card-wrapper">
+            <div class="card">
+                <h5 id="incomingCallHeader" class="card-header"></h5>
+                <div class="card-body">
+                    <button class="btn btn-lg btn-success answer-button" disabled>Answer call</button>
+                    <button class="btn btn-lg btn-danger hangup-button" disabled onclick="hangUp()">Hang up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid">
+        <div class="col-md-4 offset-md-5">
+            <h2 class="title">Server Dashboard</h2>
+        </div>
         <div class="row">
-            <div class="col-md-4 offset-md-1">
-                <h2 class="title">Server Dashboard</h2>
+            <div class="col-md-4 offset-md-2">
                 <div class="form-group row">
                     <label for="call-status" class="col-3 col-form-label">Status</label>
                     <div class="col-9">
-                        <input id="call-status" class="form-control" type="text" placeholder="Connecting to Twilio..." readonly>
+                        <input id="call-status" class="form-control" type   ="text" placeholder="Connecting to Twilio..." readonly>
                     </div>
                 </div>
             </div>
@@ -59,15 +70,6 @@
                             </div>
                         </div>
                         <button onclick="callCustomer(getElementById('outbound-number').value)" type="submit" class="btn btn-primary btn-lg call-customer-button">Call a client</button>
-                        <button class="btn btn-lg btn-danger hangup-button" disabled onclick="hangUp()">Hang up</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 call-card-wrapper">
-                <div class="card">
-                    <h5 class="card-header">Receive a call</h5>
-                    <div class="card-body">
-                        <button class="btn btn-lg btn-success answer-button" disabled>Answer call</button>
                         <button class="btn btn-lg btn-danger hangup-button" disabled onclick="hangUp()">Hang up</button>
                     </div>
                 </div>
