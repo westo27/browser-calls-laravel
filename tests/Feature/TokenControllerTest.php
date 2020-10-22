@@ -1,12 +1,8 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
 use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\VoiceGrant;
-
-use Tests\TestCase;
 
 class TokenControllerTest extends TestCase
 {
@@ -49,7 +45,7 @@ class TokenControllerTest extends TestCase
 
         // Then
         $newToken = json_decode($newTokenResponse->getContent());
-        
+
         $newTokenResponse->assertSee('token', true);
         $this->assertEquals(
             $mockToken,

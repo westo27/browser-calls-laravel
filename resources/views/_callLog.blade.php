@@ -1,12 +1,12 @@
 <?php
-$url = url("/images/call-arrow.png");
+$url = url('/images/call-arrow.png');
 ?>
 <li class="list-group-item col-md-48">
     <div class="row">
         <div class="col-md-8">
-            <?php if ($record->directionLog == "outgoing") : ?>
+            <?php if ('outgoing' == $record->directionLog) : ?>
             <div> To: {{$record->to}}</div>
-            <?php elseif ($record->directionLog == "incoming") : ?>
+            <?php elseif ('incoming' == $record->directionLog) : ?>
             <div> From: {{$record->from}}</div>
             <?php endif; ?>
             <div>{{$record->startTime->format('D jS F Y')}}</div>

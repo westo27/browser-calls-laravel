@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
@@ -37,5 +36,4 @@ return [
         'applicationSid' => env('TWILIO_APPLICATION_SID'),
         'number' => env('TWILIO_NUMBER'),
     ],
-
 ];

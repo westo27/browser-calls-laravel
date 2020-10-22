@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\VoiceGrant;
 
@@ -12,9 +10,11 @@ class TokenController extends Controller
 {
     public function __construct(AccessToken $accessToken)
     {
-        $this->accessToken=$accessToken;
-    }/**
-     * Create a new capability token
+        $this->accessToken = $accessToken;
+    }
+
+    /**
+     * Create a new capability token.
      *
      * @return \Illuminate\Http\Response
      */

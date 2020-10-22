@@ -18,13 +18,13 @@
     $twilio = new Client($sid, $token);
 
     //Get all incoming and outgoing call logs
-    $outgoingCalls = $twilio->calls->read(["from" => "+441245209623", "direction" => "outgoing-dial"]);
-    $incomingCalls = $twilio->calls->read(["to" => "+441245209623"]);
+    $outgoingCalls = $twilio->calls->read(['from' => '+441245209623', 'direction' => 'outgoing-dial']);
+    $incomingCalls = $twilio->calls->read(['to' => '+441245209623']);
 
     //Prepare arrays to be used
     foreach ($outgoingCalls as $key => $call) {
         $call->directionLog = 'outgoing';
-        if ($call->to == "client:support_agent") {
+        if ('client:support_agent' == $call->to) {
             unset($outgoingCalls[$key]);
         }
     }
@@ -32,10 +32,11 @@
     foreach ($incomingCalls as $call) {
         $call->directionLog = 'incoming';
     }
+
     ?>
 
     <div class="modal" id="incomingCallModal">
-        <div class="col-md-3 call-card-wrapper">
+        <div class="offset-md-4 col-md-4 call-card-wrapper">
             <div class="card">
                 <h5 id="incomingCallHeader" class="card-header"></h5>
                 <div class="card-body">

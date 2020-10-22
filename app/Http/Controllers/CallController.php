@@ -3,25 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Twilio\TwiML\VoiceResponse;
 
 class CallController extends Controller
 {
     /**
-     * Process a new call
+     * Process a new call.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function newCall(Request $request)
     {
-        $response = new VoiceResponse();
-        $callerIdNumber = config('services.twilio')['number'];
+        Log::info($request);
 
-        $dial = $response->dial(null, ['callerId'=>$callerIdNumber]);
+        $response = new VoiceResponse();
+        $callerIdNumber = $request['Caller'];
+
+        Log::info($request['Caller']);
+
+        $dial = $response->dial(null, ['callerId' => $callerIdNumber]);
         $phoneNumberToDial = $request->input('phoneNumber');
 
         if (isset($phoneNumberToDial)) {
@@ -33,11 +35,13 @@ class CallController extends Controller
         $dial->setTimeout(30);
         $dial->setAction($this->voicemail());
 
+        Log::info($response);
+
         return $response;
     }
 
     /**
-     * Redirect to voicemail
+     * Redirect to voicemail.
      *
      * @return VoiceResponse
      */
@@ -46,15 +50,16 @@ class CallController extends Controller
         // Start our TwiML response
         $response = new VoiceResponse();
 
-        # Use <Say> to give the caller some instructions
+        // Use <Say> to give the caller some instructions
         $response->say("Hello you have reached the MessageCloud support desk. We're sorry that we can't take your call at the moment.
          Please leave a message and one of our team will get back to you as soon as possible");
 
-        # Use <Record> to record the caller's message
+        // Use <Record> to record the caller's message
         $response->record();
 
-        # End the call with <Hangup>
+        // End the call with <Hangup>
         $response->hangup();
+
         return $response;
     }
 }

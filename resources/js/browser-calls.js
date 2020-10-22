@@ -45,10 +45,10 @@ function setupHandlers(device) {
         // If phoneNumber is part of the connection, this is a call from a
         // support agent to a customer's phone
         if ("phoneNumber" in connection.message) {
-            updateCallStatus("In call with " + connection.message.phoneNumber);
+            updateCallStatus("In call with: " + connection.message.phoneNumber);
         } else {
             // This is a call from a website user to a support agent
-            updateCallStatus("In call with" +  connection.message.phoneNumber);
+            updateCallStatus("In call with: " +  connection.message.phoneNumber);
         }
     });
 
@@ -65,12 +65,12 @@ function setupHandlers(device) {
     /* Callback for when Twilio Client receives a new incoming call */
     device.on('incoming', function(connection) {
         $("#incomingCallModal").modal();
-        $("incomingCallHeader").html("Incoming call from: " + connection.message.phoneNumber);
-        updateCallStatus("Incoming support call from: " + connection.message.phoneNumber);
+        $("#incomingCallHeader").html("Incoming call from: " + connection.parameters.From);
+        updateCallStatus("Incoming call from: " + connection.parameters.From);
 
         // Set a callback to be executed when the connection is accepted
         connection.accept(function() {
-            updateCallStatus("In call with" + connection.message.phoneNumber);
+            updateCallStatus("In call with: " + connection.parameters.From);
         });
 
         // Set a callback on the answer button and enable it
@@ -78,6 +78,7 @@ function setupHandlers(device) {
             connection.accept();
         });
         answerButton.prop("disabled", false);
+        hangUpButton.prop("disabled", false);
     });
 };
 
