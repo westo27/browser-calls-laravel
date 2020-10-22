@@ -27,5 +27,6 @@
     },
     "dependencies": {
         "twilio-client": "^1.10.1"
-    }
+    },
+    "postinstall": "npm run production"
 }
