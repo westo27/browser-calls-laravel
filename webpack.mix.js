@@ -10,8 +10,8 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-mix.js('resources/js/app.js', 'public/js');
-mix.js('resources/js/browser-calls.js', 'public/js')
+mix .js('resources/js/app.js', 'public/js/app.js')
+    .js('resources/js/browser-calls.js', 'public/js')
     .extract(['twilio-client'])
     .sass('resources/sass/app.scss', 'public/css')
     .copy('resources/img', 'public/images');
