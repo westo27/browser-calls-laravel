@@ -13,8 +13,8 @@
     $dotenv = Dotenv\Dotenv::createImmutable('../');
     $dotenv->load();
 
-    $sid = env('TWILIO_ACCOUNT_SID');
-    $token = env('Auth_Token');
+    $sid = $_ENV['TWILIO_ACCOUNT_SID']
+    $token = $_ENV('AUTH_TOKEN');
     $twilio = new Client($sid, $token);
 
     //Get all incoming and outgoing call logs
